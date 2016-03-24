@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import ioayman.github.com.tadart2016.R;
 import ioayman.github.com.tadart2016.data.ImagesDataSource;
+import ioayman.github.com.tadart2016.util.AnimationUtils;
 
 /**
  * [3/24/16:18:10]
@@ -17,6 +18,7 @@ import ioayman.github.com.tadart2016.data.ImagesDataSource;
 public class GalaryRVAdapter extends RecyclerView.Adapter<ElementViewHolder> {
     private final Context mContext;
     private ImagesDataSource dataSource;
+    private int previousPosition = 0;
 
     public GalaryRVAdapter(Context context) {
         mContext = context;
@@ -34,6 +36,8 @@ public class GalaryRVAdapter extends RecyclerView.Adapter<ElementViewHolder> {
     public void onBindViewHolder(ElementViewHolder holder, int position) {
         ElementModel model = dataSource.getData().get(position);
         holder.imageThumbnail.setImageResource(model.getImageId());
+        AnimationUtils.animate(holder, position > previousPosition);
+        previousPosition = position;
     }
 
     @Override

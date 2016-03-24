@@ -11,11 +11,18 @@ import ioayman.github.com.tadart2016.R;
  *
  * @author @IOAyman
  */
-public class ElementViewHolder extends RecyclerView.ViewHolder {
+public class ElementViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     protected ImageView imageThumbnail;
 
     public ElementViewHolder(View itemView) {
         super(itemView);
         imageThumbnail = (ImageView) itemView.findViewById(R.id.imageThumbnail);
+
+        itemView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        // TODO: 3/24/16 -- implement this
     }
 }

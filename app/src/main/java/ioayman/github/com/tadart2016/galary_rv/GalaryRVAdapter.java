@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ioayman.github.com.tadart2016.R;
+import ioayman.github.com.tadart2016.data.ImagesDataSource;
 
 /**
  * [3/24/16:18:10]
@@ -15,23 +16,28 @@ import ioayman.github.com.tadart2016.R;
  */
 public class GalaryRVAdapter extends RecyclerView.Adapter<ElementViewHolder> {
     private final Context mContext;
+    private ImagesDataSource dataSource;
 
-    public GalaryRVAdapter(Context context) {mContext = context;}
+    public GalaryRVAdapter(Context context) {
+        mContext = context;
+        dataSource = ImagesDataSource.getInstance(mContext);
+    }
 
     @Override
     public ElementViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
                 .inflate(R.layout.element, parent, false);
-        return  new ElementViewHolder(view);
+        return new ElementViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ElementViewHolder holder, int position) {
-        // TODO: 3/24/16 -- implement this
+        ElementModel model = dataSource.getData().get(position);
+        holder.imageThumbnail.setImageResource(model.getImageId());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataSource == null ? 0 : dataSource.getData().size();
     }
 }

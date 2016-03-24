@@ -14,8 +14,8 @@ public class AnimationUtils {
 
     public static void animate(RecyclerView.ViewHolder holder, boolean isGoingRight) {
         ObjectAnimator translationX = ObjectAnimator
-                .ofFloat(holder, "translationX",
-                        isGoingRight ? TRANSLATION_X_SPEED : -TRANSLATION_X_SPEED);
+                .ofFloat(holder.itemView, "translationX",
+                        isGoingRight ? TRANSLATION_X_SPEED : -TRANSLATION_X_SPEED, 0);
         translationX.setDuration(TRANSLATION_X_DURATION);
         translationX.start();
     }

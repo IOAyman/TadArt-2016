@@ -29,7 +29,7 @@ public class ImagesDataSource {
 
         if (mContext == null)
             // Simulate some pics to work with
-            for (int i = 0; i < CONFIG.IMAGES_COUNT; i++)
+            for (int i = 0; i < CONFIG.IMAGES_COUNT*3; i++)
                 data.add(new ElementModel(R.mipmap.ic_launcher));
         else
             for (int i = 0; i < CONFIG.IMAGES_COUNT; i++)

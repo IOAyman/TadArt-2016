@@ -19,7 +19,7 @@ import ioayman.github.com.tadart2016.galary_rv.GalaryRVAdapter;
  * create an instance of this fragment.
  */
 public class GalaryFragment extends Fragment {
-    private final ImagesDataSource dataSource = ImagesDataSource.getInstance(getContext());
+    private ImagesDataSource dataSource;
 
     public GalaryFragment() {
         // Required empty public constructor
@@ -36,14 +36,15 @@ public class GalaryFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        dataSource = ImagesDataSource.getInstance(getContext());
+
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_galary, container, false);
 
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.galary_recycleriew);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL);
-        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
         recyclerView.setLayoutManager(layoutManager);
 
         GalaryRVAdapter adapter = new GalaryRVAdapter(getContext(), dataSource.getData());

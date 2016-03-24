@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ioayman.github.com.tadart2016.data.ImagesDataSource;
+import ioayman.github.com.tadart2016.galary_rv.GalaryRVAdapter;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +19,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class GalaryFragment extends Fragment {
+    private final ImagesDataSource dataSource = ImagesDataSource.getInstance(getContext());
 
     public GalaryFragment() {
         // Required empty public constructor
@@ -41,6 +45,9 @@ public class GalaryFragment extends Fragment {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL);
         layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recyclerView.setLayoutManager(layoutManager);
+
+        GalaryRVAdapter adapter = new GalaryRVAdapter(getContext(), dataSource.getData());
+        recyclerView.setAdapter(adapter);
 
         return rootView;
     }

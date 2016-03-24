@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import ioayman.github.com.tadart2016.R;
-import ioayman.github.com.tadart2016.data.ImagesDataSource;
 import ioayman.github.com.tadart2016.util.AnimationUtils;
+import ioayman.github.com.tadart2016.util.BitmapUtils;
 
 /**
  * [3/24/16:18:10]
@@ -17,12 +19,12 @@ import ioayman.github.com.tadart2016.util.AnimationUtils;
  */
 public class GalaryRVAdapter extends RecyclerView.Adapter<ElementViewHolder> {
     private final Context mContext;
-    private ImagesDataSource dataSource;
+    private List<ElementModel> data;
     private int previousPosition = 0;
 
-    public GalaryRVAdapter(Context context) {
+    public GalaryRVAdapter(Context context, List<ElementModel> data) {
         mContext = context;
-        dataSource = ImagesDataSource.getInstance(mContext);
+        this.data = data;
     }
 
     @Override
@@ -34,14 +36,14 @@ public class GalaryRVAdapter extends RecyclerView.Adapter<ElementViewHolder> {
 
     @Override
     public void onBindViewHolder(ElementViewHolder holder, int position) {
-        ElementModel model = dataSource.getData().get(position);
-        holder.imageThumbnail.setImageResource(model.getImageId());
+        ElementModel model = data.get(position);
+        BitmapUtils.loadBitmap(mContext, model.getImageId(), holder.imageThumbnail);
         AnimationUtils.animate(holder, position > previousPosition);
         previousPosition = position;
     }
 
     @Override
     public int getItemCount() {
-        return dataSource == null ? 0 : dataSource.getData().size();
+        return data == null ? 0 : data.size();
     }
 }

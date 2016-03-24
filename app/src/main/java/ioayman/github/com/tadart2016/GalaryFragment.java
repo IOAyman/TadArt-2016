@@ -37,7 +37,7 @@ public class GalaryFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_galary, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.rview);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.galary_recycleriew);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL);
         layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         recyclerView.setLayoutManager(layoutManager);

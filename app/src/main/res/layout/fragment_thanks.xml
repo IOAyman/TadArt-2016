@@ -1,17 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.github.ioayman.tadart2016.ThanksFragment">
+<RelativeLayout android:id="@+id/thanksContainer"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.github.ioayman.tadart2016.ThanksFragment">
 
     <!-- TODO ~ it ain't beautiful! -->
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/thank_you"
+        android:textColor="@color/primary_light"
+        android:textSize="100sp"
+        android:textStyle="bold|italic"/>
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="THANK YOU"
-        android:textSize="100sp"
-        android:textStyle="bold|italic"
-        android:gravity="center"/>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:alpha=".4"
+        android:src="@android:color/black"/>
 
-</FrameLayout>
+</RelativeLayout>

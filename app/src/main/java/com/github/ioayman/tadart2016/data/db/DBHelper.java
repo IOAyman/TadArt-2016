@@ -33,17 +33,38 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void like(int id) {
-        Cursor c = db.rawQuery("select HITS from STATS where IMAGE_ID = ?", new String[]{String.valueOf(id)});
-        c.moveToFirst();
-        int hits = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME));
-        Log.d(CONFIG.DEBUG_TAG, "like: hits: " + hits);
-        c.close();
-
+        int hits = getHitsCount(id);
         ContentValues values = new ContentValues();
         values.put(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME, ++hits);
         db.update(SQL_STRUCTURE.STATS_TABLE.NAME,
                 values,
                 SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME + " = ?", new String[]{String.valueOf(id)});
+    }
+
+    public int getHitsCount(int id) {
+        Cursor c = db.rawQuery("select HITS from STATS where IMAGE_ID = ?", new String[]{String.valueOf(id)});
+        c.moveToFirst();
+        int hits = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME));
+        Log.d(CONFIG.DEBUG_TAG, "like: hits: " + hits);
+        c.close();
+        return hits;
+    }
+
+    public int getBestOne() {
+        final Cursor c = db.query(SQL_STRUCTURE.STATS_TABLE.NAME,
+                new String[]{SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME, SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME},
+                null, null, // selection, args
+                null, // groupBy
+                null, // having
+                SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME + " DESC", // orderBy+Order
+                String.valueOf(1) // limit
+        );
+        c.moveToFirst();
+        final int hits = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME));
+        final int id = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME));
+        c.close();
+        Log.d(CONFIG.DEBUG_TAG, "getBestOne: TOP HITS: " + hits + "\tid: " + id);
+        return id;
     }
 
     private void init(SQLiteDatabase db) {

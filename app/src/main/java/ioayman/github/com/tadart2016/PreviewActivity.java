@@ -3,10 +3,9 @@ package ioayman.github.com.tadart2016;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
+import android.util.Log;
 
 import ioayman.github.com.tadart2016.data.ImagesDataSource;
-import ioayman.github.com.tadart2016.util.BitmapUtils;
 import ioayman.github.com.tadart2016.util.CONFIG;
 
 public class PreviewActivity extends AppCompatActivity {
@@ -19,11 +18,14 @@ public class PreviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_preview);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        ImageView imageView = (ImageView) findViewById(R.id.imagePreviewHoler);
         int imageResource = ImagesDataSource.getImageResourceId(getIntent().getIntExtra(INTENT_TAG, R.mipmap.ic_launcher));
-        if (imageResource != 0) {
-//            imageView.setImageResource(imageResource);
-            BitmapUtils.loadBitmap(this, imageResource, imageView, CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
-        }
+        if (imageResource == 0)
+            Log.e(CONFIG.DEBUG_TAG,
+                    "onCreate: Could not get the ImageResource",
+                    new Exception("Could not get the ImageResource"));
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.previewFragmentContainer, PreviewFragment.newInstance(imageResource))
+                .commit();
     }
 }

@@ -7,10 +7,4 @@
     android:id="@+id/previewFragmentContainer"
     tools:context="ioayman.github.com.tadart2016.PreviewActivity">
 
-    <ImageView
-        android:id="@+id/imagePreviewHoler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/image_preview_holder"/>
-
 </FrameLayout>

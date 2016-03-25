@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016.data.db;
+package com.github.ioayman.tadart2016.data.db;
 
 import android.provider.BaseColumns;
 
@@ -17,7 +17,6 @@ public interface SQL_STRUCTURE {
                 COLUMN_HITS.NAME, COLUMN_HITS.TYPE
         );
         String SQL_DROP = String.format("DROP IF EXISTS %s", NAME);
-
         String SQL_LIKE = String.format(
                 "UPDATE %s SET %s = %s + 1 WHERE %s = ? ",
                 NAME, COLUMN_HITS.NAME, COLUMN_HITS.NAME, COLUMN_ID.NAME

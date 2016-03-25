@@ -1,14 +1,14 @@
-package ioayman.github.com.tadart2016.data;
+package com.github.ioayman.tadart2016.data;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
 
+import com.github.ioayman.tadart2016.R;
+import com.github.ioayman.tadart2016.galary_rv.ElementModel;
+import com.github.ioayman.tadart2016.util.CONFIG;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import ioayman.github.com.tadart2016.R;
-import ioayman.github.com.tadart2016.galary_rv.ElementModel;
-import ioayman.github.com.tadart2016.util.CONFIG;
 
 /**
  * [3/24/16:18:19]
@@ -29,7 +29,7 @@ public class ImagesDataSource {
 
         if (mContext == null)
             // Simulate some pics to work with
-            for (int i = 0; i < CONFIG.IMAGES_COUNT*3; i++)
+            for (int i = 0; i < CONFIG.IMAGES_COUNT * 3; i++)
                 data.add(new ElementModel(R.mipmap.ic_launcher));
         else
             for (int i = 0; i < CONFIG.IMAGES_COUNT; i++)
@@ -37,7 +37,9 @@ public class ImagesDataSource {
         return ourInstance;
     }
 
-    public static @DrawableRes int getImageResourceId(int number) {
+    public static
+    @DrawableRes
+    int getImageResourceId(int number) {
         return mContext.getResources().getIdentifier(CONFIG.IMAGE_NAME_PREFIX + number, "drawable", mContext.getPackageName());
     }
 

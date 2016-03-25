@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016.galary_rv;
+package com.github.ioayman.tadart2016.galary_rv;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
+import com.github.ioayman.tadart2016.R;
+import com.github.ioayman.tadart2016.util.AnimationUtils;
+import com.github.ioayman.tadart2016.util.BitmapUtils;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
-import ioayman.github.com.tadart2016.R;
-import ioayman.github.com.tadart2016.util.AnimationUtils;
-import ioayman.github.com.tadart2016.util.BitmapUtils;
-import ioayman.github.com.tadart2016.util.CONFIG;
+import java.util.List;
 
 /**
  * [3/24/16:18:10]

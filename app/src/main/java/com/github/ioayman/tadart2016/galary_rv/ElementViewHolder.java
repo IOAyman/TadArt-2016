@@ -1,12 +1,12 @@
-package ioayman.github.com.tadart2016.galary_rv;
+package com.github.ioayman.tadart2016.galary_rv;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import ioayman.github.com.tadart2016.R;
-import ioayman.github.com.tadart2016.util.CONFIG;
+import com.github.ioayman.tadart2016.R;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
 /**
  * [3/24/16:18:11]
@@ -25,7 +25,7 @@ public class ElementViewHolder extends RecyclerView.ViewHolder implements View.O
 
     @Override
     public void onClick(View v) {
-        if (GalaryRVAdapter.clickListener!=null)
+        if (GalaryRVAdapter.clickListener != null)
             GalaryRVAdapter.clickListener.itemClicked(v, getAdapterPosition());
         else
             Log.e(CONFIG.DEBUG_TAG,

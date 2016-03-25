@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016.util;
+package com.github.ioayman.tadart2016.util;
 
 import android.animation.ObjectAnimator;
 import android.support.v7.widget.RecyclerView;

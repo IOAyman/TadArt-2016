@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016;
+package com.github.ioayman.tadart2016;
 
 
 import android.content.Intent;
@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ioayman.github.com.tadart2016.data.ImagesDataSource;
-import ioayman.github.com.tadart2016.galary_rv.GalaryRVAdapter;
+import com.github.ioayman.tadart2016.data.ImagesDataSource;
+import com.github.ioayman.tadart2016.galary_rv.GalaryRVAdapter;
+
+import com.github.ioayman.tadart2016.R;
 
 
 /**
@@ -19,7 +21,7 @@ import ioayman.github.com.tadart2016.galary_rv.GalaryRVAdapter;
  * Use the {@link GalaryFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GalaryFragment extends Fragment implements GalaryRVAdapter.ClickListener{
+public class GalaryFragment extends Fragment implements GalaryRVAdapter.ClickListener {
     private ImagesDataSource dataSource;
 
     public GalaryFragment() {
@@ -57,8 +59,8 @@ public class GalaryFragment extends Fragment implements GalaryRVAdapter.ClickLis
 
     @Override
     public void itemClicked(View view, int position) {
-        final Intent intent = new Intent(getContext(), PreviewActivity.class);
-        intent.putExtra(PreviewActivity.INTENT_TAG, position);
+        final Intent intent = new Intent(getContext(), com.github.ioayman.tadart2016.PreviewActivity.class);
+        intent.putExtra(com.github.ioayman.tadart2016.PreviewActivity.INTENT_TAG, position);
         startActivity(intent);
     }
 }

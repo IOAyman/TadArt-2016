@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016;
+package com.github.ioayman.tadart2016;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;

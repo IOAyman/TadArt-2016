@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016.data.db;
+package com.github.ioayman.tadart2016.data.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import ioayman.github.com.tadart2016.util.CONFIG;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
 /**
  * [3/25/16:14:11]
@@ -54,7 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
             db.insert(SQL_STRUCTURE.STATS_TABLE.NAME, String.valueOf(i), values);
         }
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {

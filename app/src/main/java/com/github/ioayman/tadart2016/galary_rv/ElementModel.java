@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016.galary_rv;
+package com.github.ioayman.tadart2016.galary_rv;
 
 import android.support.annotation.DrawableRes;
 
@@ -8,13 +8,17 @@ import android.support.annotation.DrawableRes;
  * @author @IOAyman
  */
 public class ElementModel {
-    private @DrawableRes int imageId;
+    private
+    @DrawableRes
+    int imageId;
 
     public ElementModel(int imageId) {
         this.imageId = imageId;
     }
 
-    public @DrawableRes int getImageId() {
+    public
+    @DrawableRes
+    int getImageId() {
         return imageId;
     }
 }

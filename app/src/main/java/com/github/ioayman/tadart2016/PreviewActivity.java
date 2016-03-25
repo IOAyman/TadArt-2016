@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016;
+package com.github.ioayman.tadart2016;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import ioayman.github.com.tadart2016.data.db.DBHelper;
+import com.github.ioayman.tadart2016.data.db.DBHelper;
 
 public class PreviewActivity extends AppCompatActivity implements PreviewFragment.PreviewFragmentInteraction {
 
@@ -42,7 +42,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewFragmen
         dbHelper.like(imageNumber);
     }
 
-    class adapter extends FragmentPagerAdapter{
+    class adapter extends FragmentPagerAdapter {
         public adapter(FragmentManager fm) {
             super(fm);
         }
@@ -50,15 +50,15 @@ public class PreviewActivity extends AppCompatActivity implements PreviewFragmen
         @Override
         public Fragment getItem(int position) {
             Fragment f;
-            switch (position){
+            switch (position) {
                 case ThanksFragment.ID:
                     f = ThanksFragment.newInstance();
                     break;
 
                 default:
                 case PreviewFragment.ID:
-                f = PreviewFragment.newInstance(imageNumber);
-                break;
+                    f = PreviewFragment.newInstance(imageNumber);
+                    break;
             }
             return f;
         }

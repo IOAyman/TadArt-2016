@@ -1,4 +1,4 @@
-package ioayman.github.com.tadart2016;
+package com.github.ioayman.tadart2016;
 
 
 import android.content.Context;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import ioayman.github.com.tadart2016.data.ImagesDataSource;
-import ioayman.github.com.tadart2016.util.BitmapUtils;
-import ioayman.github.com.tadart2016.util.CONFIG;
+import com.github.ioayman.tadart2016.data.ImagesDataSource;
+import com.github.ioayman.tadart2016.util.BitmapUtils;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
 
 /**
@@ -25,7 +25,9 @@ import ioayman.github.com.tadart2016.util.CONFIG;
 public class PreviewFragment extends Fragment implements View.OnClickListener {
     public static final int ID = 0;
     private ImageView imageView;
-    private @DrawableRes static int imageNumber;
+    private
+    @DrawableRes
+    static int imageNumber;
     private PreviewFragmentInteraction clickListener;
 
     @Override

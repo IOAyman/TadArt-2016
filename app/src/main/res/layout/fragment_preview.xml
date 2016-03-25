@@ -12,7 +12,7 @@
         android:contentDescription="@string/image_preview_holder"/>
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/button_done"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="@dimen/circle_button_size"
         android:layout_height="@dimen/circle_button_size"

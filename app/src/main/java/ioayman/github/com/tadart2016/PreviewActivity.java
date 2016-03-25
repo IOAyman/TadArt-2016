@@ -7,16 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import ioayman.github.com.tadart2016.data.ImagesDataSource;
-import ioayman.github.com.tadart2016.util.CONFIG;
-
-public class PreviewActivity extends AppCompatActivity {
+public class PreviewActivity extends AppCompatActivity implements PreviewFragment.PreviewFragmentInteraction {
 
     public static final String INTENT_TAG = String.valueOf(PreviewActivity.class);
     private FragmentManager mFragmentManager;
-    private int imageResource;
+    private int imageNumber;
     private ViewPager pager;
 
     @Override
@@ -25,21 +21,20 @@ public class PreviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_preview);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        imageResource = ImagesDataSource.getImageResourceId(getIntent().getIntExtra(INTENT_TAG, R.mipmap.ic_launcher));
-        if (imageResource == 0)
-            Log.e(CONFIG.DEBUG_TAG,
-                    "onCreate: Could not get the ImageResource",
-                    new Exception("Could not get the ImageResource"));
+        imageNumber = getIntent().getIntExtra(INTENT_TAG, 0);
 
         mFragmentManager = getSupportFragmentManager();
 
         final adapter adapter = new adapter(mFragmentManager);
         pager = (ViewPager) findViewById(R.id.previewPager);
+        //noinspection ConstantConditions
         pager.setAdapter(adapter);
+    }
 
-        mFragmentManager.beginTransaction()
-                .add(R.id.previewFragmentContainer, PreviewFragment.newInstance(imageResource))
-                .commit();
+    @Override // PreviewFragment.PreviewFragmentInteraction
+    public void onDoneClick(int imageNumber) {
+        // TODO: 3/25/16 -- store the imageNumber in db
+        pager.setCurrentItem(ThanksFragment.ID, true);
     }
 
     class adapter extends FragmentPagerAdapter{
@@ -51,14 +46,13 @@ public class PreviewActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             Fragment f;
             switch (position){
-                // TODO: 3/25/16 -- Create ThanksFragment
-//                case ThanksFragment.ID:
-//                    f = ThanksFragment.newInstance();
-//                    break;
+                case ThanksFragment.ID:
+                    f = ThanksFragment.newInstance();
+                    break;
 
                 default:
                 case PreviewFragment.ID:
-                f = PreviewFragment.newInstance(imageResource);
+                f = PreviewFragment.newInstance(imageNumber);
                 break;
             }
             return f;

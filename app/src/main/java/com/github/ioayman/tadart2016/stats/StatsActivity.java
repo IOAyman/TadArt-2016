@@ -19,7 +19,7 @@ public class StatsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stats);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        GridView mContentView = (GridView) findViewById(R.id.fullscreen_content);
+        GridView mContentView = (GridView) findViewById(R.id.statsGrid);
         assert mContentView != null;
         mContentView.setAdapter(new StatsGridAdapter(this));
     }

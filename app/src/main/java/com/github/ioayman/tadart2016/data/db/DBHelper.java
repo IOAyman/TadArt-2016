@@ -54,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public int getBestOne() {
-        return getTopX(1).get(0)[1];
+        return getTopX(1).get(0)[0];
     }
 
     public List<int[]> getTopX(int howMuch) {

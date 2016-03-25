@@ -46,6 +46,9 @@ public class PreviewFragment extends Fragment {
 
         imageView = (ImageView) rootView.findViewById(R.id.imagePreviewHoler);
         BitmapUtils.loadBitmap(getContext(), imageRes, imageView, CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
+
+        // TODO: 3/25/16 -- Animate the DONE button
+
         return rootView;
     }
 

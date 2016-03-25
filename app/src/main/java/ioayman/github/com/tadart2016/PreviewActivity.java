@@ -8,9 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import ioayman.github.com.tadart2016.data.db.DBHelper;
+
 public class PreviewActivity extends AppCompatActivity implements PreviewFragment.PreviewFragmentInteraction {
 
     public static final String INTENT_TAG = String.valueOf(PreviewActivity.class);
+    private DBHelper dbHelper;
     private FragmentManager mFragmentManager;
     private int imageNumber;
     private ViewPager pager;
@@ -20,6 +23,8 @@ public class PreviewActivity extends AppCompatActivity implements PreviewFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        dbHelper = DBHelper.getInstance(this);
 
         imageNumber = getIntent().getIntExtra(INTENT_TAG, 0);
 
@@ -33,8 +38,8 @@ public class PreviewActivity extends AppCompatActivity implements PreviewFragmen
 
     @Override // PreviewFragment.PreviewFragmentInteraction
     public void onDoneClick(int imageNumber) {
-        // TODO: 3/25/16 -- store the imageNumber in db
         pager.setCurrentItem(ThanksFragment.ID, true);
+        dbHelper.like(imageNumber);
     }
 
     class adapter extends FragmentPagerAdapter{

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ioayman.github.com.tadart2016.R;
-import ioayman.github.com.tadart2016.util.CONFIG;
 import ioayman.github.com.tadart2016.galary_rv.ElementModel;
+import ioayman.github.com.tadart2016.util.CONFIG;
 
 /**
  * [3/24/16:18:19]
@@ -33,12 +33,12 @@ public class ImagesDataSource {
                 data.add(new ElementModel(R.mipmap.ic_launcher));
         else
             for (int i = 0; i < CONFIG.IMAGES_COUNT; i++)
-                data.add(new ElementModel(getImageResourceId("r" + i)));
+                data.add(new ElementModel(getImageResourceId(i)));
         return ourInstance;
     }
 
-    private static @DrawableRes int getImageResourceId(String name) {
-        return mContext.getResources().getIdentifier(name, "drawable", mContext.getPackageName());
+    public static @DrawableRes int getImageResourceId(int number) {
+        return mContext.getResources().getIdentifier(CONFIG.IMAGE_NAME_PREFIX + number, "drawable", mContext.getPackageName());
     }
 
     public List<ElementModel> getData() {

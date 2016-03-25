@@ -25,7 +25,11 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
     // Decode image in background.
     @Override
     protected Bitmap doInBackground(Integer... params) {
-        final Bitmap bitmap = BitmapUtils.decodeSampledBitmapFromResource(context.getResources(), params[0], 100, 100);
+        final Bitmap bitmap = BitmapUtils.decodeSampledBitmapFromResource(
+                context.getResources(),
+                params[0], // resource  id
+                params[1], params[2] // width, height
+        );
         BitmapUtils.addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);
         return bitmap;
     }

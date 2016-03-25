@@ -78,7 +78,9 @@ public class BitmapUtils {
         return inSampleSize;
     }
 
-    public static void loadBitmap(Context context, @DrawableRes int resId, ImageView imageView) {
+    public static void loadBitmap(Context context,
+                                  @DrawableRes int resId, ImageView imageView,
+                                  int reqWidth, int reqHeight) {
         final String imageKey = String.valueOf(resId);
 
         final Bitmap bitmap = getBitmapFromMemCache(imageKey);
@@ -86,7 +88,7 @@ public class BitmapUtils {
             imageView.setImageBitmap(bitmap);
         } else {
             BitmapWorkerTask task = new BitmapWorkerTask(context, imageView);
-            task.execute(resId);
+            task.execute(resId, reqWidth, reqHeight);
         }
     }
 }

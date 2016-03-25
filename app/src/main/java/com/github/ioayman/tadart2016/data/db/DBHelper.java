@@ -9,6 +9,9 @@ import android.util.Log;
 
 import com.github.ioayman.tadart2016.util.CONFIG;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * [3/25/16:14:11]
  *
@@ -51,20 +54,29 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public int getBestOne() {
+        return getTopX(1).get(0)[1];
+    }
+
+    public List<int[]> getTopX(int howMuch) {
+        List<int[]> res = new ArrayList<>(howMuch);
         final Cursor c = db.query(SQL_STRUCTURE.STATS_TABLE.NAME,
                 new String[]{SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME, SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME},
                 null, null, // selection, args
                 null, // groupBy
                 null, // having
                 SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME + " DESC", // orderBy+Order
-                String.valueOf(1) // limit
+                String.valueOf(howMuch) // limit
         );
+        int hits, id;
         c.moveToFirst();
-        final int hits = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME));
-        final int id = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME));
+        do {
+            hits = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME));
+            id = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME));
+            Log.d(CONFIG.DEBUG_TAG, "getBestOne: TOP HITS: " + hits + "\tid: " + id);
+            res.add(new int[]{id, hits});
+        } while (c.moveToNext());
         c.close();
-        Log.d(CONFIG.DEBUG_TAG, "getBestOne: TOP HITS: " + hits + "\tid: " + id);
-        return id;
+        return res;
     }
 
     private void init(SQLiteDatabase db) {

@@ -19,6 +19,7 @@ import ioayman.github.com.tadart2016.util.CONFIG;
  * create an instance of this fragment.
  */
 public class PreviewFragment extends Fragment {
+    public static final int ID = 0;
     private ImageView imageView;
     private @DrawableRes
     static int imageRes;

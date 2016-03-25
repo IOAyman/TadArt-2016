@@ -7,4 +7,9 @@
     android:id="@+id/previewFragmentContainer"
     tools:context="ioayman.github.com.tadart2016.PreviewActivity">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/previewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </FrameLayout>

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.ioayman.tadart2016.data.ImagesDataSource;
+import com.github.ioayman.tadart2016.util.ImagesUtils;
 import com.github.ioayman.tadart2016.data.db.DBHelper;
 
 
@@ -46,7 +46,7 @@ public class ThanksFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         rootView.setBackgroundResource(
-                ImagesDataSource.getImageResourceId(
+                ImagesUtils.getImageResourceId(getContext(),
                         DBHelper.getInstance(getContext()).getBestOne()
                 )
         );

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.github.ioayman.tadart2016.data.ImagesDataSource;
+import com.github.ioayman.tadart2016.util.ImagesUtils;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
 import com.github.ioayman.tadart2016.util.CONFIG;
 
@@ -58,7 +58,7 @@ public class PreviewFragment extends Fragment implements View.OnClickListener {
 
         imageView = (ImageView) rootView.findViewById(R.id.imagePreviewHoler);
         BitmapUtils.loadBitmap(getContext(),
-                ImagesDataSource.getImageResourceId(imageNumber), imageView,
+                ImagesUtils.getImageResourceId(getContext(), imageNumber), imageView,
                 CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
 
         // TODO: 3/25/16 -- Animate the DONE button

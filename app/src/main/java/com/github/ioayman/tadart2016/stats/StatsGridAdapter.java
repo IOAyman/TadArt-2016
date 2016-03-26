@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.ioayman.tadart2016.R;
-import com.github.ioayman.tadart2016.data.ImagesDataSource;
+import com.github.ioayman.tadart2016.util.ImagesUtils;
 import com.github.ioayman.tadart2016.data.db.DBHelper;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
 import com.github.ioayman.tadart2016.util.CONFIG;
@@ -63,7 +63,7 @@ public class StatsGridAdapter extends BaseAdapter {
         hitsCount.setText(String.valueOf(stats[1]));
 
         final ImageView thumbnail = (ImageView) rootView.findViewById(R.id.thumbnail);
-        BitmapUtils.loadBitmap(context, ImagesDataSource.getImageResourceId(stats[0]),
+        BitmapUtils.loadBitmap(context, ImagesUtils.getImageResourceId(context, stats[0]),
                 thumbnail, CONFIG.THUMBNAIL_WIDTH, CONFIG.THUMBNAIL_HEIGHT);
 
         return rootView;

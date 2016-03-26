@@ -1,9 +1,8 @@
-package com.github.ioayman.tadart2016;
+package com.github.ioayman.tadart2016.app;
 
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.github.ioayman.tadart2016.util.ImagesUtils;
+import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
 import com.github.ioayman.tadart2016.util.CONFIG;
+import com.github.ioayman.tadart2016.util.ImagesUtils;
+
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -24,11 +28,18 @@ import com.github.ioayman.tadart2016.util.CONFIG;
  */
 public class PreviewFragment extends Fragment implements View.OnClickListener {
     public static final int ID = 0;
-    private ImageView imageView;
-    private
-    @DrawableRes
-    static int imageNumber;
+    private final Random random = new Random();
+    private ImageView imagePreview;
+    private Timer timer;
     private PreviewFragmentInteraction clickListener;
+
+    public PreviewFragment() {
+        // Required empty public constructor
+    }
+
+    public static PreviewFragment newInstance() {
+        return new PreviewFragment();
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -36,18 +47,10 @@ public class PreviewFragment extends Fragment implements View.OnClickListener {
         clickListener = (PreviewFragmentInteraction) getActivity();
     }
 
-    public PreviewFragment() {
-        // Required empty public constructor
-    }
-
-    public static PreviewFragment newInstance(int imageNumber) {
-        PreviewFragment.imageNumber = imageNumber;
-        return new PreviewFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        timer = new Timer();
     }
 
     @Override
@@ -56,10 +59,18 @@ public class PreviewFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_preview, container, false);
 
-        imageView = (ImageView) rootView.findViewById(R.id.imagePreviewHoler);
-        BitmapUtils.loadBitmap(getContext(),
-                ImagesUtils.getImageResourceId(getContext(), imageNumber), imageView,
-                CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
+        imagePreview = (ImageView) rootView.findViewById(R.id.imagePreviewHoler);
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                BitmapUtils.loadBitmap(getContext(),
+                        ImagesUtils.getImageResourceId(getContext(),
+                                random.nextInt(CONFIG.IMAGES_COUNT)),
+                        imagePreview,
+                        CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
+            }
+        }, 0, 5000);
 
         // TODO: 3/25/16 -- Animate the DONE button
         ImageButton buttonDone = (ImageButton) rootView.findViewById(R.id.button_done);
@@ -74,8 +85,9 @@ public class PreviewFragment extends Fragment implements View.OnClickListener {
             Log.e(CONFIG.DEBUG_TAG,
                     "onClick: I have to make the PreviewActivity implement PreviewFragment.PreviewFragmentInterraction",
                     new Exception("onClick: I have to make the PreviewActivity implement PreviewFragment.PreviewFragmentInterraction"));
-        else
-            clickListener.onDoneClick(imageNumber);
+//        else
+//            clickListener.onDoneClick(text.getText()); // // TODO: 3/27/16
+//            clickListener.onDoneClick(imageNumber);
     }
 
     interface PreviewFragmentInteraction {

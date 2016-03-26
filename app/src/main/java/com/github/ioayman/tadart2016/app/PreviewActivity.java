@@ -1,4 +1,4 @@
-package com.github.ioayman.tadart2016;
+package com.github.ioayman.tadart2016.app;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -8,15 +8,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.data.db.DBHelper;
+
+import java.util.Random;
 
 public class PreviewActivity extends AppCompatActivity implements PreviewFragment.PreviewFragmentInteraction {
 
     public static final String INTENT_TAG = String.valueOf(PreviewActivity.class);
     private DBHelper dbHelper;
     private FragmentManager mFragmentManager;
-    private int imageNumber;
     private ViewPager pager;
+    private Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +28,6 @@ public class PreviewActivity extends AppCompatActivity implements PreviewFragmen
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         dbHelper = DBHelper.getInstance(this);
-
-        imageNumber = getIntent().getIntExtra(INTENT_TAG, 0);
 
         mFragmentManager = getSupportFragmentManager();
 
@@ -57,7 +58,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewFragmen
 
                 default:
                 case PreviewFragment.ID:
-                    f = PreviewFragment.newInstance(imageNumber);
+                    f = PreviewFragment.newInstance();
                     break;
             }
             return f;

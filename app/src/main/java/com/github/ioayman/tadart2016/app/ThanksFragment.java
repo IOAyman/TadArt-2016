@@ -1,4 +1,4 @@
-package com.github.ioayman.tadart2016;
+package com.github.ioayman.tadart2016.app;
 
 
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.util.ImagesUtils;
 import com.github.ioayman.tadart2016.data.db.DBHelper;
 

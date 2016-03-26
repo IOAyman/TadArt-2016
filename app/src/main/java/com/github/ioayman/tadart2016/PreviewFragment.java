@@ -79,6 +79,6 @@ public class PreviewFragment extends Fragment implements View.OnClickListener {
     }
 
     interface PreviewFragmentInteraction {
-        void onDoneClick(@DrawableRes int imageNumber);
+        void onDoneClick(int imageNumber);
     }
 }

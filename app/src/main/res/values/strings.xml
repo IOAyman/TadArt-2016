@@ -6,5 +6,6 @@
     <string name="thank_you">شكرا على زيارتكم</string>
 
     <string name="title_activity_stats">TadArt [Stats]</string>
+    <string name="selected_pic_number">#</string>
 
 </resources>

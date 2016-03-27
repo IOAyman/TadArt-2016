@@ -5,10 +5,11 @@
 
     <dimen name="cardview_corner_radius">2dp</dimen>
     <dimen name="cardview_margin">2dp</dimen>
-    <dimen name="circle_button_size">50dp</dimen>
+    <dimen name="circle_button_size">150dp</dimen>
     <dimen name="circle_button_margin_right">10dp</dimen>
     <dimen name="stats_element_column_width">300dp</dimen>
     <dimen name="stats_grid_h_spacing">25dp</dimen>
     <dimen name="stats_grid_v_spacing">25dp</dimen>
     <dimen name="stats_layout_padding">50dp</dimen>
+    <dimen name="button_margin_end">350dp</dimen>
 </resources>

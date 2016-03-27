@@ -1,22 +1,16 @@
 package com.github.ioayman.tadart2016.stats;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.data.ImagesDataSource;
-import com.github.ioayman.tadart2016.data.db.DBHelper;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
 import com.github.ioayman.tadart2016.util.CONFIG;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,48 +18,35 @@ import java.util.List;
  *
  * @author @IOAyman
  */
-public class StatsGridAdapter extends BaseAdapter {
-    private Context context;
-    private DBHelper db;
-    private List<int[]> top3;
+public class StatsGridAdapter extends RecyclerView.Adapter<ElementStatsViewHolder> {
 
-    public StatsGridAdapter(Context context) {
-        this.context = context;
-        this.db = DBHelper.getInstance(this.context);
-        top3 = db.getTopX(3);
+    private Context mContext;
+    private List<ElementStats> data;
+
+    public StatsGridAdapter(Context mContext, List<ElementStats> data) {
+        this.mContext = mContext;
+        this.data = data;
     }
 
     @Override
-    public int getCount() {
-        return top3.size();
+    public ElementStatsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        final View view = LayoutInflater.from(mContext).inflate(R.layout.element_stats, parent, false);
+        return new ElementStatsViewHolder(view);
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public void onBindViewHolder(ElementStatsViewHolder holder, int position) {
+        final ElementStats stats = data.get(position);
+
+        holder.hitsCount.setText(stats.getHits());
+        BitmapUtils.loadBitmap(mContext,
+                ImagesDataSource.getImageResourceId(stats.getImageNumber()),
+                holder.thumbnail,
+                CONFIG.THUMBNAIL_WIDTH, CONFIG.THUMBNAIL_HEIGHT);
     }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @SuppressLint("ViewHolder")
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View rootView = convertView;
-        if (rootView == null)
-            rootView = LayoutInflater.from(context).inflate(R.layout.element_stats, parent, false);
-
-        final TextView hitsCount = (TextView) rootView.findViewById(R.id.hitsCountText);
-        final int[] stats = top3.get(position);
-        Log.d(CONFIG.DEBUG_TAG, "getView: STATS: " + Arrays.toString(stats));
-        hitsCount.setText(String.valueOf(stats[1]));
-
-        final ImageView thumbnail = (ImageView) rootView.findViewById(R.id.thumbnail);
-        BitmapUtils.loadBitmap(context, ImagesDataSource.getImageResourceId(stats[0]),
-                thumbnail, CONFIG.THUMBNAIL_WIDTH, CONFIG.THUMBNAIL_HEIGHT);
-
-        return rootView;
+    public int getItemCount() {
+        return data == null ? 0 : data.size();
     }
 }

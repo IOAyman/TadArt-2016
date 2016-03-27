@@ -7,3 +7,6 @@
 /captures
 *.apk
 *.jks
+io*.jpg
+io*.png
+___*___

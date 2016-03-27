@@ -9,7 +9,7 @@ public class ElementStats {
     private int hits;
     private int imageNumber;
 
-    public ElementStats(int hits, int imageNumber) {
+    public ElementStats(int imageNumber, int hits) {
         this.hits = hits;
         this.imageNumber = imageNumber;
     }

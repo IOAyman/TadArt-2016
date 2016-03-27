@@ -38,11 +38,12 @@ public class StatsGridAdapter extends RecyclerView.Adapter<ElementStatsViewHolde
     public void onBindViewHolder(ElementStatsViewHolder holder, int position) {
         final ElementStats stats = data.get(position);
 
-        holder.hitsCount.setText(stats.getHits());
+        ImagesDataSource.getInstance(mContext);
+        holder.hitsCount.setText(String.valueOf(stats.getHits()));
         BitmapUtils.loadBitmap(mContext,
                 ImagesDataSource.getImageResourceId(stats.getImageNumber()),
                 holder.thumbnail,
-                CONFIG.THUMBNAIL_WIDTH, CONFIG.THUMBNAIL_HEIGHT);
+                CONFIG.THUMBNAIL_WIDTH * 2, CONFIG.THUMBNAIL_HEIGHT * 2);
     }
 
     @Override

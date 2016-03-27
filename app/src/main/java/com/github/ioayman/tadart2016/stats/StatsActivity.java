@@ -3,8 +3,8 @@ package com.github.ioayman.tadart2016.stats;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.data.db.DBHelper;
@@ -27,7 +27,7 @@ public class StatsActivity extends AppCompatActivity {
         RecyclerView statsGrid = (RecyclerView) findViewById(R.id.statsGrid);
         assert statsGrid != null;
 
-        final GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+        final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         statsGrid.setLayoutManager(layoutManager);
 
         final DBHelper dbHelper = DBHelper.getInstance(this);

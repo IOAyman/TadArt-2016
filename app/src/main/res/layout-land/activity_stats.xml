@@ -6,16 +6,9 @@
              android:padding="@dimen/stats_layout_padding"
              tools:context=".stats.StatsActivity">
 
-    <GridView android:id="@+id/statsGrid"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:columnWidth="@dimen/stats_element_column_width"
-              android:gravity="center"
-              android:horizontalSpacing="@dimen/stats_grid_h_spacing"
-              android:numColumns="auto_fit"
-              android:stretchMode="columnWidth"
-              android:verticalSpacing="@dimen/stats_grid_v_spacing"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/statsGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

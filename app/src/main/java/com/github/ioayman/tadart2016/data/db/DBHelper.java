@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.github.ioayman.tadart2016.stats.ElementStats;
 import com.github.ioayman.tadart2016.util.CONFIG;
 
 import java.util.ArrayList;
@@ -54,11 +55,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public int getBestOne() {
-        return getTopX(1).get(0)[0];
+        return getTopX(1).get(0).getImageNumber();
     }
 
-    public List<int[]> getTopX(int howMuch) {
-        List<int[]> res = new ArrayList<>(howMuch);
+    public List<ElementStats> getTopX(int howMuch) {
+        List<ElementStats> res = new ArrayList<>(howMuch);
         final Cursor c = db.query(SQL_STRUCTURE.STATS_TABLE.NAME,
                 new String[]{SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME, SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME},
                 null, null, // selection, args
@@ -73,7 +74,7 @@ public class DBHelper extends SQLiteOpenHelper {
             hits = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_HITS.NAME));
             id = c.getInt(c.getColumnIndex(SQL_STRUCTURE.STATS_TABLE.COLUMN_ID.NAME));
             Log.d(CONFIG.DEBUG_TAG, "getBestOne: TOP HITS: " + hits + "\tid: " + id);
-            res.add(new int[]{id, hits});
+            res.add(new ElementStats( id, hits));
         } while (c.moveToNext());
         c.close();
         return res;

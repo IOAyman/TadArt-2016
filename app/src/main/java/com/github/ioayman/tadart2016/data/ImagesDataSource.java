@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.DrawableRes;
 
 import com.github.ioayman.tadart2016.R;
-import com.github.ioayman.tadart2016.galary_rv.ElementModel;
+import com.github.ioayman.tadart2016.app.galary_rv.ElementModel;
 import com.github.ioayman.tadart2016.util.CONFIG;
 
 import java.util.ArrayList;

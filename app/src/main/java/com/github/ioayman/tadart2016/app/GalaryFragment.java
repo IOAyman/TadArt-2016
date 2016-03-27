@@ -1,4 +1,4 @@
-package com.github.ioayman.tadart2016;
+package com.github.ioayman.tadart2016.app;
 
 
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.ioayman.tadart2016.data.ImagesDataSource;
-import com.github.ioayman.tadart2016.galary_rv.GalaryRVAdapter;
+import com.github.ioayman.tadart2016.app.galary_rv.GalaryRVAdapter;
 
 import com.github.ioayman.tadart2016.R;
 
@@ -59,8 +59,8 @@ public class GalaryFragment extends Fragment implements GalaryRVAdapter.ClickLis
 
     @Override
     public void itemClicked(View view, int position) {
-        final Intent intent = new Intent(getContext(), com.github.ioayman.tadart2016.PreviewActivity.class);
-        intent.putExtra(com.github.ioayman.tadart2016.PreviewActivity.INTENT_TAG, position);
+        final Intent intent = new Intent(getContext(), PreviewActivity.class);
+        intent.putExtra(PreviewActivity.INTENT_TAG, position);
         startActivity(intent);
     }
 }

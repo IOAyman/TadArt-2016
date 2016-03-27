@@ -1,4 +1,4 @@
-package com.github.ioayman.tadart2016.galary_rv;
+package com.github.ioayman.tadart2016.app.galary_rv;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;

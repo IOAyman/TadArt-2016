@@ -1,4 +1,4 @@
-package com.github.ioayman.tadart2016;
+package com.github.ioayman.tadart2016.app;
 
 
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.data.ImagesDataSource;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
 import com.github.ioayman.tadart2016.util.CONFIG;

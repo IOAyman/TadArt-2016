@@ -1,8 +1,10 @@
-package com.github.ioayman.tadart2016;
+package com.github.ioayman.tadart2016.app;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.github.ioayman.tadart2016.R;
 
 public class MainActivity extends AppCompatActivity {
 

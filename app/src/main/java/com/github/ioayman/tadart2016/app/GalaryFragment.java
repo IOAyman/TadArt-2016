@@ -2,6 +2,7 @@ package com.github.ioayman.tadart2016.app;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +10,11 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.github.ioayman.tadart2016.data.ImagesDataSource;
-import com.github.ioayman.tadart2016.app.galary_rv.GalaryRVAdapter;
+import android.widget.TextView;
 
 import com.github.ioayman.tadart2016.R;
+import com.github.ioayman.tadart2016.app.galary_rv.GalaryRVAdapter;
+import com.github.ioayman.tadart2016.data.ImagesDataSource;
 
 
 /**
@@ -54,6 +55,13 @@ public class GalaryFragment extends Fragment implements GalaryRVAdapter.ClickLis
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
+        final TextView ioayman = (TextView) rootView.findViewById(R.id.ioayman);
+        ioayman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://fb.me/draymanb")));
+            }
+        });
         return rootView;
     }
 

@@ -100,4 +100,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_STRUCTURE.STATS_TABLE.SQL_DROP);
         onCreate(db);
     }
+
+    public void reset() {
+        // TODO: 3/28/16 -- save a dump first
+        db.execSQL(SQL_STRUCTURE.STATS_TABLE.SQL_DROP);
+        onCreate(getWritableDatabase());
+    }
 }

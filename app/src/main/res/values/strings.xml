@@ -7,6 +7,7 @@
 
     <string name="title_activity_stats">TadArt [Stats]</string>
     <string name="made_by">made by Ayman Nedjmeddime</string>
+    <string name="button_reset_text">RESET</string>
 
 
 </resources>

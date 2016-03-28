@@ -1,14 +1,40 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="@color/primary"
-             android:padding="@dimen/stats_layout_padding"
-             tools:context=".stats.StatsActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardview_dark_background"
+                android:padding="@dimen/stats_layout_padding"
+                tools:context=".stats.StatsActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/statsGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</FrameLayout>
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:width="@dimen/circle_button_size"
+        android:height="@dimen/circle_button_size"
+        android:background="@drawable/reset_button"
+        android:gravity="top|end"
+        android:onClick="resetLikes"
+        android:paddingBottom="20dp"
+        android:paddingEnd="7dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:paddingStart="7dp"
+        android:paddingTop="20dp"
+        android:text="@string/button_reset_text"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>

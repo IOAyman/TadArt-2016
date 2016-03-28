@@ -3,9 +3,10 @@
 
     <string name="image_thumbnail_holder">Image thumbnail holder</string>
     <string name="image_preview_holder">Image preview holder</string>
-    <string name="thank_you">شكرا على زيارتكم</string>
+    <string name="image_thanks_holder">Thanks image holder</string>
 
     <string name="title_activity_stats">TadArt [Stats]</string>
     <string name="made_by">made by Ayman Nedjmeddime</string>
+
 
 </resources>

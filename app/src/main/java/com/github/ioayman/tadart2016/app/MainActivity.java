@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.ioayman.tadart2016.R;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +30,6 @@ public class MainActivity extends AppCompatActivity {
                         .replace(R.id.mainFragmentContainer, GalaryFragment.newInstance())
                         .commit();
             }
-        }, 5000);
+        }, CONFIG.WELCOME_DELAY);
     }
 }

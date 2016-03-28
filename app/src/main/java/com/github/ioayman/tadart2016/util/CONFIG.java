@@ -7,6 +7,7 @@ package com.github.ioayman.tadart2016.util;
  */
 public interface CONFIG {
     String DEBUG_TAG = "IOFROG";
+    long WELCOME_DELAY = 3000;
     int IMAGES_COUNT = 50;
     int THUMBNAIL_WIDTH = 100;
     int THUMBNAIL_HEIGHT = 100;

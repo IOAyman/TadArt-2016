@@ -35,5 +35,8 @@ public class StatsActivity extends AppCompatActivity {
 
         final StatsGridAdapter adapter = new StatsGridAdapter(this, list);
         statsGrid.setAdapter(adapter);
+
+
+        // TODO: 3/28/16 -- Implement a RESET DB button
     }
 }

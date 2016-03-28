@@ -19,7 +19,7 @@ public class BitmapUtils {
     // int in its constructor.
     private static final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
     // Use 1/8th of the available memory for this memory cache.
-    private static final int cacheSize = maxMemory / 8;
+    private static final int cacheSize = maxMemory / 4;
     public static final LruCache<String, Bitmap> mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
         @Override
         protected int sizeOf(String key, Bitmap bitmap) {

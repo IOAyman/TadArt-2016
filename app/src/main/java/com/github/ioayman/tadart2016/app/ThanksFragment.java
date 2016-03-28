@@ -9,9 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.github.ioayman.tadart2016.R;
-import com.github.ioayman.tadart2016.data.ImagesDataSource;
-import com.github.ioayman.tadart2016.data.db.DBHelper;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
 
 /**
@@ -42,9 +41,9 @@ public class ThanksFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_thanks, container, false);
         BitmapUtils.loadBitmap(getContext(),
-                ImagesDataSource.getImageResourceId(DBHelper.getInstance(getContext()).getBestOne()),
+                R.drawable.cu,
                 ((ImageView) rootView.findViewById(R.id.cuImage)),
-                1024, 720);
+                CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
         return rootView;
     }
 

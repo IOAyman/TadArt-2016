@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.util.BitmapUtils;
+import com.github.ioayman.tadart2016.util.CONFIG;
 
 
 /**
@@ -41,7 +42,7 @@ public class WelcomeFragment extends Fragment {
         BitmapUtils.loadBitmap(getContext(),
                 R.drawable.welcome,
                 welcomeImage,
-                1024, 720);
+                CONFIG.PREVIEW_WIDTH, CONFIG.PREVIEW_HEIGHT);
 
         return rootView;
     }

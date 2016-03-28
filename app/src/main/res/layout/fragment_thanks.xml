@@ -1,29 +1,13 @@
-<RelativeLayout android:id="@+id/thanksContainer"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".app.ThanksFragment">
-
-    <!-- TODO ~ it ain't beautiful! -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:text="@string/thank_you"
-        android:textColor="@color/primary_light"
-        android:textSize="100sp"
-        android:textStyle="bold|italic"/>
+<FrameLayout android:id="@+id/thanksContainer"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             tools:context=".app.ThanksFragment">
 
     <ImageView
+        android:id="@+id/cuImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:alpha=".4"
-        android:src="@android:color/black"/>
-
-</RelativeLayout>
+        android:contentDescription="@string/image_thanks_holder"/>
+</FrameLayout>

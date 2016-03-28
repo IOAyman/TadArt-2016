@@ -2,15 +2,16 @@ package com.github.ioayman.tadart2016.app;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.github.ioayman.tadart2016.R;
 import com.github.ioayman.tadart2016.data.ImagesDataSource;
 import com.github.ioayman.tadart2016.data.db.DBHelper;
+import com.github.ioayman.tadart2016.util.BitmapUtils;
 
 
 /**
@@ -40,17 +41,11 @@ public class ThanksFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_thanks, container, false);
+        BitmapUtils.loadBitmap(getContext(),
+                ImagesDataSource.getImageResourceId(DBHelper.getInstance(getContext()).getBestOne()),
+                ((ImageView) rootView.findViewById(R.id.cuImage)),
+                1024, 720);
         return rootView;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        rootView.setBackgroundResource(
-                ImagesDataSource.getImageResourceId(
-                        DBHelper.getInstance(getContext()).getBestOne()
-                )
-        );
     }
 
     @Override

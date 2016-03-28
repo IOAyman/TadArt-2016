@@ -16,7 +16,7 @@ public interface SQL_STRUCTURE {
                 COLUMN_ID.NAME, COLUMN_ID.TYPE,
                 COLUMN_HITS.NAME, COLUMN_HITS.TYPE
         );
-        String SQL_DROP = String.format("DROP IF EXISTS %s", NAME);
+        String SQL_DROP = String.format("DROP TABLE IF EXISTS %s", NAME);
         String SQL_LIKE = String.format(
                 "UPDATE %s SET %s = %s + 1 WHERE %s = ? ",
                 NAME, COLUMN_HITS.NAME, COLUMN_HITS.NAME, COLUMN_ID.NAME
